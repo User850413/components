@@ -16,6 +16,7 @@ export const Primary: Story = {
   args: {
     text: 'primary',
     type: 'primary',
+    disabled: false,
   },
 }
 
@@ -23,6 +24,7 @@ export const Secondary: Story = {
   args: {
     text: 'secondary',
     type: 'secondary',
+    disabled: false,
   },
 }
 
@@ -30,12 +32,13 @@ export const Tertiary: Story = {
   args: {
     text: 'tertiary',
     type: 'tertiary',
+    disabled: false,
   },
 }
 
 export const Disabled: Story = {
   args: {
     text: 'disabled',
-    type: 'disabled',
+    disabled: true,
   },
 }

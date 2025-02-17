@@ -8,6 +8,7 @@ export interface ButtonProps {
   classNames?: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   ariaLabel?: string
+  disabled?: boolean
 }
 
 export default function Button({
@@ -17,6 +18,7 @@ export default function Button({
   size = 'md',
   classNames,
   ariaLabel = '버튼',
+  disabled = false,
 }: ButtonProps) {
   return (
     <button
@@ -24,13 +26,16 @@ export default function Button({
       onClick={onClick}
       className={clsx(
         {
-          'bg-primary hover:bg-primary-darker text-white': type === 'primary',
+          'bg-primary hover:bg-primary-darker text-white':
+            type === 'primary' && !disabled,
           'bg-secondary hover:bg-secondary-darker text-white':
-            type === 'secondary',
+            type === 'secondary' && !disabled,
           'bg-tertiary text-primary hover:bg-tertiary-darker':
-            type === 'tertiary',
-          'text-primary bg-gray-300 hover:bg-gray-400': type === 'default',
-          'cursor-default bg-gray-300 text-gray-400': type === 'disabled',
+            type === 'tertiary' && !disabled,
+          'text-primary bg-gray-300 hover:bg-gray-400':
+            type === 'default' && !disabled,
+          'cursor-default bg-gray-300 text-gray-400':
+            type === 'disabled' || disabled,
         },
         'h-fit',
         {
