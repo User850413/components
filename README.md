@@ -1,6 +1,8 @@
 # 컴포넌트 만들기 챌린지
 
-## 1주차
+## 도전 목록
+
+### 1주차
 
 - button
 - Input Field
@@ -10,7 +12,7 @@
 - Tooltip
 - Avatar
 
-## 2주차
+### 2주차
 
 - Modal/Dialog
 - Dropdown Menu
@@ -20,7 +22,7 @@
 - Search Bar with Auto-suggest
 - Tabs
 
-## 3주차
+### 3주차
 
 - Toast Notification
 - Breadcrumb
@@ -30,7 +32,7 @@
 - Rating Stars
 - Progress Bar
 
-## 4주차
+### 4주차
 
 - Card Component
 - Product List/Grid
@@ -41,3 +43,17 @@
 - Dashboard Widget
 - Profile Card
 - Hero Section
+
+---
+
+## 기술 스택
+
+- typeScript
+- Next page router
+- tailwind CSS
+- storybook
+
+## 보조 도구
+
+- chat GPT
+- codeRabbit
