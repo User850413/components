@@ -7,6 +7,7 @@ export interface ButtonProps {
   type?: 'primary' | 'secondary' | 'tertiary' | 'default' | 'disabled'
   classNames?: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  ariaLabel: string
 }
 
 export default function Button({
@@ -15,9 +16,11 @@ export default function Button({
   type = 'default',
   size = 'md',
   classNames,
+  ariaLabel = '버튼',
 }: ButtonProps) {
   return (
     <button
+      aria-label={ariaLabel}
       onClick={onClick}
       className={clsx(
         {
