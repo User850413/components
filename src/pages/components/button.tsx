@@ -6,9 +6,5 @@ export interface ButtonProps extends HTMLButtonElement {
 }
 
 export default function Button({ text, onClick }: ButtonProps) {
-  return (
-    <button onClick={onClick} className="relative w-10 p-3">
-      {text}
-    </button>
-  )
+  return <button onClick={onClick}>{text}</button>
 }
