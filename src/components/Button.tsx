@@ -7,7 +7,7 @@ export interface ButtonProps {
   type?: 'primary' | 'secondary' | 'tertiary' | 'default' | 'disabled'
   classNames?: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-  ariaLabel: string
+  ariaLabel?: string
 }
 
 export default function Button({

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Button from '../button-page'
 import { fn } from '@storybook/test'
+import Button from '../Button'
 
 const meta = {
   component: Button,
@@ -14,6 +14,28 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    text: 'button',
+    text: 'primary',
+    type: 'primary',
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    text: 'secondary',
+    type: 'secondary',
+  },
+}
+
+export const Tertiary: Story = {
+  args: {
+    text: 'tertiary',
+    type: 'tertiary',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    text: 'disabled',
+    type: 'disabled',
   },
 }
