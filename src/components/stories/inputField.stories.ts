@@ -35,14 +35,14 @@ export const ReadOnly: Story = {
   },
 }
 
-export const Number: Story = {
+export const NumberState: Story = {
   args: {
     type: 'number',
     size: 'xl',
   },
 }
 
-export const Error: Story = {
+export const ErrorState: Story = {
   args: {
     error: true,
     errorMessage: 'ERROR!',
