@@ -104,8 +104,8 @@ export default function InputField({
         autoFocus={autoFocus}
         className={clsx(
           { 'bg-quaternary': !background },
-          { 'bg-gray-200': disabled },
-          { 'text-primary-lighter': readonly || disabled },
+          { 'bg-gray-200 text-primary-lighter': disabled },
+          { 'bg-quaternary-lighter text-primary-lighter': readonly },
           { 'border-2 border-alert': error },
           {
             'text-xs': size === 'sm',
@@ -117,23 +117,29 @@ export default function InputField({
           classnames
         )}
       />
-      {canClear && (type === 'text' || type === 'email') && isXRendered && (
-        <button
-          onClick={onClickXButton}
-          className={clsx(
-            {
-              'top-[7px] h-[17px] w-[17px] text-xs': size === 'sm',
-              'text-md top-[8px] h-[23px] w-[23px]': size === 'md',
-              'top-[9px] h-[27px] w-[27px] text-lg':
-                size === 'lg' || size === 'xl',
-            },
-            'absolute right-2 aspect-square rounded-full bg-gray-300 p-0 hover:bg-gray-400'
-          )}
-        >
-          ✖
-        </button>
+      {canClear &&
+        (type === 'text' || type === 'email') &&
+        isXRendered &&
+        !disabled &&
+        !readonly && (
+          <button
+            onClick={onClickXButton}
+            className={clsx(
+              {
+                'top-[7px] h-[17px] w-[17px] text-xs': size === 'sm',
+                'text-md top-[8px] h-[23px] w-[23px]': size === 'md',
+                'top-[9px] h-[27px] w-[27px] text-lg':
+                  size === 'lg' || size === 'xl',
+              },
+              'absolute right-2 aspect-square rounded-full bg-gray-300 p-0 hover:bg-gray-400'
+            )}
+          >
+            ✖
+          </button>
+        )}
+      {error && errorMessage && (
+        <p className="text-sm text-alert">{errorMessage}</p>
       )}
-      {error && errorMessage && <p className="text-alert">{errorMessage}</p>}
     </div>
   )
 }

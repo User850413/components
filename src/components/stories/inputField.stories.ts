@@ -13,7 +13,9 @@ type Story = StoryObj<typeof InputField>
 export const Default: Story = {
   args: {
     placeholder: 'hello',
+    defaultValue: 'hello',
     type: 'text',
+    size: 'md',
   },
 }
 
@@ -21,6 +23,7 @@ export const Disabled: Story = {
   args: {
     defaultValue: 'disabled',
     disabled: true,
+    size: 'sm',
   },
 }
 
@@ -28,5 +31,21 @@ export const ReadOnly: Story = {
   args: {
     defaultValue: 'read only',
     readonly: true,
+    size: 'lg',
+  },
+}
+
+export const Number: Story = {
+  args: {
+    type: 'number',
+    size: 'xl',
+  },
+}
+
+export const Error: Story = {
+  args: {
+    error: true,
+    errorMessage: 'ERROR!',
+    size: 'md',
   },
 }
