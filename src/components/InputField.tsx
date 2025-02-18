@@ -123,6 +123,8 @@ export default function InputField({
         !disabled &&
         !readonly && (
           <button
+            aria-label="입력값 지우기"
+            type="button"
             onClick={onClickXButton}
             className={clsx(
               {
