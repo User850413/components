@@ -61,7 +61,7 @@ export default function InputField({
   )
 
   const onInputChange = () => {
-    if (inputRef.current !== null && inputRef.current.value) {
+    if (inputRef.current?.value) {
       setIsXRendered(true)
     } else {
       setIsXRendered(false)
@@ -90,9 +90,7 @@ export default function InputField({
         disabled={disabled}
         readOnly={readonly}
         onChange={(e) => {
-          if (onChange) {
-            onChange(e)
-          }
+          onChange?.(e)
           onInputChange()
         }}
         onFocus={onFocus}
