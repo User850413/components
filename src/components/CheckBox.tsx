@@ -1,22 +1,9 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
-
-const COLORS = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'sky',
-  'blue',
-  'purple',
-  'pink',
-  'gray',
-] as const
 
 interface CheckBoxProps {
   label?: string
-  color?: (typeof COLORS)[number]
+  color?: 'primary' | 'secondary' | 'tertiary' | 'gray'
   variants?: 'outline' | 'subtle' | 'solid'
   disabled?: boolean
   readonly?: boolean
@@ -49,37 +36,22 @@ export default function CheckBox({
   // NOTE : UI 스타일링 로직
   const variantsClasses = {
     outline: {
-      red: 'border-red-400 bg-white text-red-400',
-      orange: 'border-orange-400 bg-white text-orange-400',
-      yellow: 'border-yellow-400 bg-white text-yellow-400',
-      green: 'border-green-400 bg-white text-green-400',
-      sky: 'border-sky-400 bg-white text-sky-400',
-      blue: 'border-blue-400 bg-white text-blue-400',
-      purple: 'border-purple-400 bg-white text-purple-400',
-      pink: 'border-pink-400 bg-white text-pink-400',
-      gray: 'border-gray-400 bg-white text-gray-400',
+      primary: 'border-primary bg-white text-primary hover:bg-gray-50',
+      secondary: 'border-secondary bg-white text-secondary hover:bg-gray-50',
+      tertiary: 'border-tertiary bg-white text-tertiary hover:bg-gray-50',
+      gray: 'border-gray-400 bg-white text-gray-400 hover:bg-gray-50',
     },
     subtle: {
-      red: 'bg-red-200 text-red-500',
-      orange: 'bg-orange-200 text-orange-500',
-      yellow: 'bg-yellow-200 text-yellow-500',
-      green: 'bg-green-200 text-green-500',
-      sky: 'bg-sky-200 text-sky-500',
-      blue: 'bg-blue-200 text-blue-500',
-      purple: 'bg-purple-200 text-purple-500',
-      pink: 'bg-pink-200 text-pink-500',
-      gray: 'bg-gray-200 text-gray-500',
+      primary: 'bg-primary-soft text-primary-darker hover:bg-primary',
+      secondary: 'bg-secondary-soft text-secondary-darker hover:bg-secondary',
+      tertiary: 'bg-tertiary-soft text-tertiary-darker hover:bg-tertiary',
+      gray: 'bg-gray-200 text-gray-500 hover:bg-gray-300',
     },
     solid: {
-      red: 'bg-red-400 text-white',
-      orange: 'bg-orange-400 text-white',
-      yellow: 'bg-yellow-400 text-white',
-      green: 'bg-green-400 text-white',
-      sky: 'bg-sky-400 text-white',
-      blue: 'bg-blue-400 text-white',
-      purple: 'bg-purple-400 text-white',
-      pink: 'bg-pink-400 text-white',
-      gray: 'bg-gray-400 text-white',
+      primary: 'bg-primary text-white hover:bg-primary-darker',
+      secondary: 'bg-secondary text-white hover:bg-secondary-darker',
+      tertiary: 'bg-tertiary text-white hover:bg-tertiary-darker',
+      gray: 'bg-gray-400 text-white hover:bg-gray-600',
     },
   }
   const finalStyleClasses = variantsClasses[variants][color]
@@ -94,12 +66,15 @@ export default function CheckBox({
           onClick={handleClickCheck}
         >
           <div
-            className={twMerge(
-              clsx(
-                'relative h-7 w-7 rounded-md',
-                { border: variants === 'outline' },
-                finalStyleClasses
-              )
+            className={clsx(
+              'relative rounded-sm',
+              { border: variants === 'outline' },
+              {
+                'h-5 w-5 rounded-sm': size === 'sm',
+                'h-7 w-7 rounded-md': size == 'md',
+                'h-9 w-9 rounded-lg': size === 'lg',
+              },
+              finalStyleClasses
             )}
           >
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
