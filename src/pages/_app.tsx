@@ -8,7 +8,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div>
-      <Button text="메인으로" type="primary" onClick={() => router.push('/')} />
+      <Button
+        text="메인으로"
+        variants="primary"
+        onClick={() => router.push('/')}
+      />
       <Component {...pageProps} />
     </div>
   )

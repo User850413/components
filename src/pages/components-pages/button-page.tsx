@@ -7,12 +7,17 @@ export default function ButtonPage() {
 
   return (
     <div className="m-5 flex gap-4">
-      <Button size="xs" type="primary" text="alert" onClick={alertMessage} />
-      <Button size="sm" type="secondary" />
-      <Button size="md" type="tertiary" />
-      <Button size="lg" type="default" />
-      <Button size="xl" type="disabled" />
-      <Button size="2xl" type="primary" />
+      <Button
+        size="xs"
+        variants="primary"
+        text="alert"
+        onClick={alertMessage}
+      />
+      <Button size="sm" variants="secondary" />
+      <Button size="md" variants="tertiary" />
+      <Button size="lg" variants="default" />
+      <Button size="xl" variants="disabled" />
+      <Button size="2xl" variants="primary" />
     </div>
   )
 }

@@ -11,13 +11,19 @@ export default function Home() {
           role="button"
           onClick={() => router.push('/components-pages/button-page')}
         >
-          <Button text="버튼 컴포넌트" type="tertiary" />
+          <Button text="버튼 컴포넌트" variants="tertiary" />
         </li>
         <li
           role="button"
           onClick={() => router.push('/components-pages/inputField-page')}
         >
-          <Button text="인풋 필드 컴포넌트" type="tertiary" />
+          <Button text="인풋 필드 컴포넌트" variants="tertiary" />
+        </li>
+        <li
+          role="button"
+          onClick={() => router.push('/components-pages/checkBox-page')}
+        >
+          <Button text="체크 박스 컴포넌트" variants="tertiary" />
         </li>
       </ul>
     </div>
