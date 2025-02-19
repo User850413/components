@@ -1,5 +1,8 @@
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
+
+import checkIcon from '/public/icons/check.svg'
+import Image from 'next/image'
 
 interface CheckBoxProps {
   label?: string
@@ -24,16 +27,10 @@ export default function CheckBox({
   checked: defaultChecked = false,
   name,
 }: CheckBoxProps) {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
   const [checked, setChecked] = useState(defaultChecked)
-  const checkBoxId = label && 'customCheckBox'
-
-  useEffect(() => {
-    console.log(checked ? `${label} checked!` : `${label} unchecked!`)
-  }, [label, checked])
-
-  const handleClickCheck = () => {
-    setChecked((prev) => !prev)
-  }
+  const checkBoxId = name
 
   // NOTE : UI 스타일링 로직
   const checkedClasses = {
@@ -85,19 +82,21 @@ export default function CheckBox({
 
   return (
     <>
-      <div>
+      <div className="box-border">
         <input
+          ref={inputRef}
           type="checkbox"
           className="hidden"
           id={checkBoxId}
           checked={checked}
           name={name}
+          disabled={disabled}
+          readOnly={readonly}
+          onChange={() => {
+            setChecked((prev) => !prev)
+          }}
         />
-        <label
-          htmlFor={checkBoxId}
-          className="flex w-fit items-center"
-          onClick={handleClickCheck}
-        >
+        <label htmlFor={checkBoxId} className="flex w-fit items-center">
           <div
             className={clsx(
               'relative cursor-pointer rounded-sm',
@@ -111,8 +110,8 @@ export default function CheckBox({
             )}
           >
             {checked && (
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                o
+              <span className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2">
+                <Image src={checkIcon} fill alt="체크 아이콘" />
               </span>
             )}
           </div>
