@@ -1,8 +1,7 @@
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 
-import checkIcon from '/public/icons/check.svg'
-import Image from 'next/image'
+import Check from '@/assets/check'
 
 interface CheckBoxProps {
   label?: string
@@ -99,19 +98,22 @@ export default function CheckBox({
         <label htmlFor={checkBoxId} className="flex w-fit items-center">
           <div
             className={clsx(
-              'relative cursor-pointer rounded-sm',
+              'relative rounded-sm',
               { border: variants === 'outline' },
               {
                 'h-5 w-5 rounded-sm': size === 'sm',
                 'h-7 w-7 rounded-md': size == 'md',
                 'h-9 w-9 rounded-lg': size === 'lg',
               },
+              {
+                'cursor-pointer': !disabled && !readonly,
+              },
               `${checked ? finalCheckedStyleClasses : finalUnCheckedStyleClasses}`
             )}
           >
             {checked && (
               <span className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2">
-                <Image src={checkIcon} fill alt="체크 아이콘" />
+                <Check />
               </span>
             )}
           </div>
