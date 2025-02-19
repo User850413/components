@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 
 import Check from '@/assets/check'
 
@@ -31,7 +31,9 @@ export default function CheckBox({
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   const [checked, setChecked] = useState(defaultChecked)
-  const checkBoxId = name
+
+  const id = useId()
+  const checkBoxId = name || id
 
   // NOTE : UI 스타일링 로직
   const checkedClasses = {
