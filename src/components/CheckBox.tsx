@@ -66,7 +66,7 @@ export default function CheckBox({
       primary: 'bg-primary-soft',
       secondary: 'bg-secondary-soft',
       tertiary: 'bg-tertiary-soft',
-      gray: 'bg-red-300',
+      gray: 'bg-gray-300',
     },
     solid: {
       primary: 'border border-gray-400',
