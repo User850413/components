@@ -20,7 +20,7 @@ export default {
         tertiary: '#FFCF50',
         'tertiary-soft': '#ffe9b0',
         'tertiary-lighter': '#ffd669',
-        'tertiary-darker': '#f2c344',
+        'tertiary-darker': '#ebb934',
         quaternary: '#FEFAE0',
         'quaternary-soft': '#fffdef',
         'quaternary-lighter': '#fffef4',

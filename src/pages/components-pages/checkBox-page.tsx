@@ -5,16 +5,18 @@ export default function CheckBoxPage() {
     <ul className="ml-4 mt-4 flex flex-col items-start gap-2">
       <li>
         <CheckBox
-          label="안녕하세요"
+          label="첫 번째 버튼"
+          name="첫 번째 버튼"
           gap={10}
           color="primary"
-          variants="subtle"
+          variants="outline"
           size="sm"
         />
       </li>
       <li>
         <CheckBox
-          label="안녕하세요"
+          label="두 번째 버튼"
+          name="두 번째 버튼"
           gap={10}
           color="secondary"
           variants="solid"
@@ -23,7 +25,8 @@ export default function CheckBoxPage() {
       </li>
       <li>
         <CheckBox
-          label="안녕하세요"
+          label="세 번째 버튼"
+          name="세 번째 버튼"
           gap={10}
           color="tertiary"
           variants="subtle"
@@ -32,7 +35,8 @@ export default function CheckBoxPage() {
       </li>
       <li>
         <CheckBox
-          label="안녕하세요"
+          label="네 번째 버튼"
+          name="네 번째 버튼"
           gap={10}
           color="gray"
           variants="outline"
@@ -41,7 +45,8 @@ export default function CheckBoxPage() {
       </li>
       <li>
         <CheckBox
-          label="disabled"
+          label="다섯 번째 버튼"
+          name="다섯 번째 버튼"
           gap={10}
           color="primary"
           variants="subtle"

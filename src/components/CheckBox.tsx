@@ -10,6 +10,7 @@ interface CheckBoxProps {
   size?: 'sm' | 'md' | 'lg'
   gap?: number
   checked?: boolean
+  name?: string
 }
 
 export default function CheckBox({
@@ -21,20 +22,21 @@ export default function CheckBox({
   size = 'md',
   gap = 15,
   checked: defaultChecked = false,
+  name,
 }: CheckBoxProps) {
   const [checked, setChecked] = useState(defaultChecked)
   const checkBoxId = label && 'customCheckBox'
 
   useEffect(() => {
-    console.log(checked ? 'checked!' : 'unchecked!')
-  }, [checked])
+    console.log(checked ? `${label} checked!` : `${label} unchecked!`)
+  }, [label, checked])
 
   const handleClickCheck = () => {
     setChecked((prev) => !prev)
   }
 
   // NOTE : UI 스타일링 로직
-  const variantsClasses = {
+  const checkedClasses = {
     outline: {
       primary: 'border-primary bg-white text-primary hover:bg-gray-50',
       secondary: 'border-secondary bg-white text-secondary hover:bg-gray-50',
@@ -56,12 +58,41 @@ export default function CheckBox({
       gray: 'bg-gray-400 text-white hover:bg-gray-600',
     },
   }
-  const finalStyleClasses = variantsClasses[variants][color]
+
+  const unCheckedClasses = {
+    outline: {
+      primary: 'border-gray-400',
+      secondary: 'border-gray-400',
+      tertiary: 'border-gray-400',
+      gray: 'border-gray-400',
+    },
+    subtle: {
+      primary: 'bg-primary-soft',
+      secondary: 'bg-secondary-soft',
+      tertiary: 'bg-tertiary-soft',
+      gray: 'bg-red-300',
+    },
+    solid: {
+      primary: 'border border-gray-400',
+      secondary: 'border border-gray-400',
+      tertiary: 'border border-gray-400',
+      gray: 'border border-gray-400',
+    },
+  }
+
+  const finalCheckedStyleClasses = checkedClasses[variants][color]
+  const finalUnCheckedStyleClasses = unCheckedClasses[variants][color]
 
   return (
     <>
       <div>
-        <input type="checkbox" className="hidden" id={checkBoxId} />
+        <input
+          type="checkbox"
+          className="hidden"
+          id={checkBoxId}
+          checked={checked}
+          name={name}
+        />
         <label
           htmlFor={checkBoxId}
           className="flex w-fit items-center"
@@ -76,12 +107,14 @@ export default function CheckBox({
                 'h-7 w-7 rounded-md': size == 'md',
                 'h-9 w-9 rounded-lg': size === 'lg',
               },
-              finalStyleClasses
+              `${checked ? finalCheckedStyleClasses : finalUnCheckedStyleClasses}`
             )}
           >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              o
-            </span>
+            {checked && (
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                o
+              </span>
+            )}
           </div>
           <p style={{ marginLeft: gap }}>{label}</p>
         </label>
