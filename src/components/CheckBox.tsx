@@ -13,6 +13,7 @@ interface CheckBoxProps {
   gap?: number
   checked?: boolean
   name?: string
+  onChange?: (checked: boolean) => void
 }
 
 export default function CheckBox({
@@ -25,6 +26,7 @@ export default function CheckBox({
   gap = 15,
   checked: defaultChecked = false,
   name,
+  onChange,
 }: CheckBoxProps) {
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -92,10 +94,17 @@ export default function CheckBox({
           disabled={disabled}
           readOnly={readonly}
           onChange={() => {
+            onChange?.(!checked)
             setChecked((prev) => !prev)
           }}
         />
-        <label htmlFor={checkBoxId} className="flex w-fit items-center">
+        <label
+          htmlFor={checkBoxId}
+          className="flex w-fit items-center"
+          aria-disabled={disabled}
+          role="checkbox"
+          aria-checked={checked}
+        >
           <div
             className={clsx(
               'relative rounded-sm',
