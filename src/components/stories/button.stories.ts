@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     text: 'primary',
-    type: 'primary',
+    variants: 'primary',
     disabled: false,
   },
 }
@@ -23,7 +23,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     text: 'secondary',
-    type: 'secondary',
+    variants: 'secondary',
     disabled: false,
   },
 }
@@ -31,7 +31,7 @@ export const Secondary: Story = {
 export const Tertiary: Story = {
   args: {
     text: 'tertiary',
-    type: 'tertiary',
+    variants: 'tertiary',
     disabled: false,
   },
 }

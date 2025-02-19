@@ -4,7 +4,7 @@ import { MouseEventHandler } from 'react'
 export interface ButtonProps {
   text?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
-  type?: 'primary' | 'secondary' | 'tertiary' | 'default' | 'disabled'
+  variants?: 'primary' | 'secondary' | 'tertiary' | 'default' | 'disabled'
   classNames?: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   ariaLabel?: string
@@ -14,7 +14,7 @@ export interface ButtonProps {
 export default function Button({
   text = 'button',
   onClick = () => {},
-  type = 'default',
+  variants = 'default',
   size = 'md',
   classNames,
   ariaLabel = '버튼',
@@ -26,16 +26,16 @@ export default function Button({
       onClick={onClick}
       className={clsx(
         {
-          'bg-primary hover:bg-primary-darker text-white':
-            type === 'primary' && !disabled,
-          'bg-secondary hover:bg-secondary-darker text-white':
-            type === 'secondary' && !disabled,
+          'bg-primary text-white hover:bg-primary-darker':
+            variants === 'primary' && !disabled,
+          'bg-secondary text-white hover:bg-secondary-darker':
+            variants === 'secondary' && !disabled,
           'bg-tertiary text-primary hover:bg-tertiary-darker':
-            type === 'tertiary' && !disabled,
-          'text-primary bg-gray-300 hover:bg-gray-400':
-            type === 'default' && !disabled,
+            variants === 'tertiary' && !disabled,
+          'bg-gray-300 text-primary hover:bg-gray-400':
+            variants === 'default' && !disabled,
           'cursor-default bg-gray-300 text-gray-400':
-            type === 'disabled' || disabled,
+            variants === 'disabled' || disabled,
         },
         'h-fit',
         {
