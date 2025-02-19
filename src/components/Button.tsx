@@ -9,6 +9,7 @@ export interface ButtonProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   ariaLabel?: string
   disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export default function Button({
@@ -19,9 +20,11 @@ export default function Button({
   classNames,
   ariaLabel = '버튼',
   disabled = false,
+  type = 'button',
 }: ButtonProps) {
   return (
     <button
+      type={type}
       aria-label={ariaLabel}
       onClick={onClick}
       className={clsx(
