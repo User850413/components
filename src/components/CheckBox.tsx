@@ -42,9 +42,11 @@ export default function CheckBox({
       gray: 'border-gray-400 bg-white text-gray-400 hover:bg-gray-50',
     },
     subtle: {
-      primary: 'bg-primary-soft text-primary-darker hover:bg-primary',
-      secondary: 'bg-secondary-soft text-secondary-darker hover:bg-secondary',
-      tertiary: 'bg-tertiary-soft text-tertiary-darker hover:bg-tertiary',
+      primary: 'bg-primary-soft text-primary-darker hover:bg-primary-lighter',
+      secondary:
+        'bg-secondary-soft text-secondary-darker hover:bg-secondary-lighter',
+      tertiary:
+        'bg-tertiary-soft text-tertiary-darker hover:bg-tertiary-lighter',
       gray: 'bg-gray-200 text-gray-500 hover:bg-gray-300',
     },
     solid: {
@@ -67,7 +69,7 @@ export default function CheckBox({
         >
           <div
             className={clsx(
-              'relative rounded-sm',
+              'relative cursor-pointer rounded-sm',
               { border: variants === 'outline' },
               {
                 'h-5 w-5 rounded-sm': size === 'sm',
