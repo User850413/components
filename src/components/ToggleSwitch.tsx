@@ -9,6 +9,8 @@ interface ToggleSwitchProps {
   size?: 'sm' | 'md' | 'lg'
   label?: string
   gap?: number
+  disabled?: boolean
+  defaultChecked?: boolean
 }
 
 export default function ToggleSwitch({
@@ -19,8 +21,10 @@ export default function ToggleSwitch({
   size = 'md',
   label,
   gap = 10,
+  disabled = false,
+  defaultChecked = false,
 }: ToggleSwitchProps) {
-  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [isChecked, setIsChecked] = useState<boolean>(defaultChecked)
   const customId = useId()
 
   const buttonId = id || customId
@@ -37,14 +41,17 @@ export default function ToggleSwitch({
         name={buttonId}
         aria-label={ariaLabel}
         className="hidden"
+        disabled={disabled}
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={buttonId} className="flex w-fit items-center">
         <span
           className={clsx(
-            'relative box-border block cursor-pointer rounded-full transition-colors',
+            'relative box-border block rounded-full transition-colors',
+            { 'cursor-pointer': !disabled },
             {
-              'border-primary bg-primary-soft': isChecked,
-              'border-gray-400 bg-gray-200': !isChecked,
+              'border-primary bg-primary-soft': isChecked && !disabled,
+              'border-gray-400 bg-gray-200': !isChecked || disabled,
             },
             {
               'h-5 w-10 border-[2px]': size === 'sm',
@@ -56,13 +63,20 @@ export default function ToggleSwitch({
         >
           <span
             className={clsx(
-              'absolute left-0 box-border rounded-full transition-transform',
+              'absolute box-border rounded-full transition-transform',
               {
-                'bg-gray-400': !isChecked,
-                'left-1 translate-x-full bg-primary':
-                  isChecked && size !== 'lg',
-                'left-[0.4rem] translate-x-full bg-primary':
-                  isChecked && size === 'lg',
+                'left-0 bg-gray-400': !isChecked,
+                'translate-x-full': isChecked,
+              },
+
+              // NOTE : size lg일 때 UI 보완
+              {
+                'left-1': size !== 'lg' && isChecked,
+                'left-[0.4rem]': size === 'lg' && isChecked,
+              },
+              {
+                'bg-primary': isChecked && !disabled,
+                'translate-x-full bg-gray-400': defaultChecked && disabled,
               },
               {
                 'h-4 w-4': size === 'sm',
