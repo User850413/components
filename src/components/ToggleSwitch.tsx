@@ -18,7 +18,7 @@ export default function ToggleSwitch({
   classNames,
   size = 'md',
   label,
-  gap,
+  gap = 10,
 }: ToggleSwitchProps) {
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const customId = useId()
@@ -38,7 +38,7 @@ export default function ToggleSwitch({
         aria-label={ariaLabel}
         className="hidden"
       />
-      <label htmlFor={buttonId}>
+      <label htmlFor={buttonId} className="flex w-fit items-center">
         <span
           className={clsx(
             'relative box-border block cursor-pointer rounded-full transition-colors',
@@ -72,6 +72,18 @@ export default function ToggleSwitch({
             )}
           />
         </span>
+        {label && (
+          <p
+            style={{ marginLeft: gap }}
+            className={clsx({
+              'text-sm': size === 'sm',
+              'text-md': size === 'md',
+              'text-lg': size === 'lg',
+            })}
+          >
+            {label}
+          </p>
+        )}
       </label>
     </div>
   )
