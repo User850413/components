@@ -4,10 +4,10 @@
 
 ### 1주차
 
-- button
-- Input Field
-- Checkbox & Radio Button
-- Toggle Switch
+- button (02/17)
+- Input Field (02/18)
+- Checkbox (02/19)
+- Toggle Switch (02/20)
 - Badge
 - Tooltip
 - Avatar
