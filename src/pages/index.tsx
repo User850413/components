@@ -25,6 +25,12 @@ export default function Home() {
         >
           <Button text="체크 박스 컴포넌트" variants="tertiary" />
         </li>
+        <li
+          role="button"
+          onClick={() => router.push('/components-pages/toggleSwitch-page')}
+        >
+          <Button text="토글 스위치 컴포넌트" variants="tertiary" />
+        </li>
       </ul>
     </div>
   )
